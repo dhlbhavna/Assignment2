@@ -1,0 +1,48 @@
+#include<stdio.h> 
+#include<conio.h>
+#define f(x) a3*x*x*x+a2*x*x+a1*x+a0;//aegument bhako macro ho
+
+int a3,a2,a1,a0,i=1;
+
+int main()
+{
+    
+    float xl,xu,xm,error;
+    float fxl,fxu,fxm;
+    printf("Enter the value for coefficients a3,a2,a1,a0\n");
+    scanf("%d%d%d%d",&a3,&a2,&a1,&a0);
+    
+    
+    printf("Enter your initial guess for xl and xu also enter your desired error\n");
+     scanf("%f%f%f",&xl,&xu,&error);
+     
+     while(1)
+     {
+          printf("Iteration No %d:\n",i);
+          printf("the value for  xu=%f xl=%f  xm=%f\n",xu,xl,xm);
+          xm=(xu+xl)/2;
+          fxl=f(xl);
+     fxu=f(xu);
+          if(((xu-xl)/xu)<error)
+          {
+                             printf("Root is %f",xm);
+                             break;
+           }
+           else
+           {
+               fxm=f(xm);
+               if((fxl*fxm)<0)
+               {
+                              xu=xm;
+                              }
+               else if((fxm*fxu)<0)
+               {
+                    xl=xm;
+               }
+           }
+           i++;
+     }
+               getch();
+               return 0;
+}
+
